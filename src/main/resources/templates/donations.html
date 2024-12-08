@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/common/base::layout(~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+</head>
+<body>
+<section class="banner d-flex justify-content-center align-items-center">
+  <div class="text-center">
+    <!-- slider_area_start -->
+    <div class="slider_area">
+      <div class="single_slider d-flex align-items-center slider_bg_1 overlay2">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9">
+              <div class="slider_text ">
+                <span>Receive Donations from Donor Within 3 Hours</span>
+                <h3>Volunteer for Donation.</h3>
+                <p>Deliver Donated Item to Needy Person within 24 hours of receiving</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- slider_area_end -->
+
+
+<!--    Donations Area Start-->
+    <div class="container mt-5 mb-5">
+        <div class="row">
+          <div th:each="donation: ${donations}" class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">[[${donation.itemName}]]</h5>
+                <p class="card-text">
+                  Please Pick this Item at
+                  <b>[[${donation.collectionDateTime}]]</b>
+                  from <strong>[[${donation.user.address}]]</strong>
+                </p>
+                <a th:href="@{'/donations/volunteer/' + ${donation.donationId}}" class="btn btn-success mt-5">Volunteer</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+<!--    Donation Area Ends-->
+
+    <!--        counter area start-->
+    <div class="counter_area">
+      <div class="container">
+        <div class="counter_bg overlay">
+          <div class="row">
+            <div class="col-lg-3 col-md-6">
+              <div class="single_counter d-flex align-items-center justify-content-center">
+                <div class="icon">
+                  <i class="flaticon-calendar"></i>
+                </div>
+                <div class="events">
+                  <h3 class="counter">120</h3>
+                  <p>Finished Event</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="single_counter d-flex align-items-center justify-content-center">
+                <div class="icon">
+                  <i class="flaticon-heart-beat"></i>
+                </div>
+                <div class="events">
+                  <h3 class="counter">120</h3>
+                  <p>Finished Event</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="single_counter d-flex align-items-center justify-content-center">
+                <div class="icon">
+                  <i class="flaticon-in-love"></i>
+                </div>
+                <div class="events">
+                  <h3 class="counter">120</h3>
+                  <p>Finished Event</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="single_counter d-flex align-items-center justify-content-center">
+                <div class="icon">
+                  <i class="flaticon-hug"></i>
+                </div>
+                <div class="events">
+                  <h3 class="counter">120</h3>
+                  <p>Finished Event</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- counter_area_end  -->
+
+  </div>
+</section>
+
+</body>
+</html>

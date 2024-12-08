@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/common/base::layout(~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+</head>
+<body>
+<section class="banner d-flex justify-content-center align-items-center">
+  <div class="text-center">
+    <!-- slider_area_start -->
+    <div class="slider_area">
+      <div class="single_slider d-flex align-items-center slider_bg_1 overlay2">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9">
+              <div class="slider_text ">
+                <span>Receive Donations from Donor Within 3 Hours</span>
+                <h3>Volunteer for Donation.</h3>
+                <p>Deliver Donated Item to Needy Person within 24 hours of receiving</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- slider_area_end -->
+
+
+    <!--    Donations Area Start-->
+    <div class="container mt-5 mb-5">
+      <div class="row">
+        <div th:each="donation: ${donations}" class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">[[${donation.itemName}]]</h5>
+              <p class="card-text">
+                Item needs to be delivered within 24 hrs
+              </p>
+              <a th:href="@{'/volunteered/report/' + ${donation.donationId}}" class="btn btn-success mt-5">Delivered</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--    Donation Area Ends-->
+
+
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+name: Donate
+packages:
+  - path: com.example.donate
+test_recording:
+  test_commands:
+    - command: mvn test
+      env: {}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/common/base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<section class="banner d-flex justify-content-center align-items-center mb-5">
+    <div class="m-5 w-50">
+        <br><br><br>
+        <h3 class="text-center">Donation Form</h3>
+        <!--                        Thymeleaf Code Start        -->
+        <form action="" novalidate th:action="@{/save-donation}" method="POST" th:object="${donation}">
+            <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
+                <p class="text-center" th:text="${session.message.content}"></p>
+                <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+            </div>
+            <div class="form-group">
+                <label for="name">Enter Item Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter Item Name"
+                       name="itemName" th:required th:value="${donation.itemName}">
+            </div>
+            <div class="form-group">
+                <label for="condition">Enter Item Condition</label>
+                <select name="itemCondition"  id="condition" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="datetimepicker1">Enter Your Collection Date and Time</label>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='datetime-local' class="form-control" name="collectionDateTime"/>
+                </div>
+            </div>
+            <div class="text-center mb-3">
+                <button type="submit" class="btn btn-success" style="width:120px;">Donate</button>
+            </div>
+        </form>
+        <!--                        Thymeleaf Code End        -->
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>
+
+</body>
+</html>
